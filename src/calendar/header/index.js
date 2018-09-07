@@ -5,10 +5,6 @@ import XDate from 'xdate';
 import PropTypes from 'prop-types';
 import styleConstructor from './style';
 import { weekDayNames } from '../../dateutils';
-import {
-  CHANGE_MONTH_LEFT_ARROW,
-  CHANGE_MONTH_RIGHT_ARROW
-} from '../../testIDs';
 
 class CalendarHeader extends Component {
   static propTypes = {
@@ -23,10 +19,6 @@ class CalendarHeader extends Component {
     weekNumbers: PropTypes.bool,
     onPressArrowLeft: PropTypes.func,
     onPressArrowRight: PropTypes.func
-  };
-
-  static defaultProps = {
-    monthFormat: 'MMMM yyyy',
   };
 
   constructor(props) {
@@ -87,8 +79,7 @@ class CalendarHeader extends Component {
         <TouchableOpacity
           onPress={this.onPressLeft}
           style={this.style.arrow}
-          hitSlop={{left: 20, right: 20, top: 20, bottom: 20}}
-          testID={CHANGE_MONTH_LEFT_ARROW}
+          hitSlop={{left: 5, right: 10, top: 0, bottom: 0}}
         >
           {this.props.renderArrow
             ? this.props.renderArrow('left')
@@ -101,9 +92,8 @@ class CalendarHeader extends Component {
       rightArrow = (
         <TouchableOpacity
           onPress={this.onPressRight}
-          style={this.style.arrow}
-          hitSlop={{left: 20, right: 20, top: 20, bottom: 20}}
-          testID={CHANGE_MONTH_RIGHT_ARROW}
+          style={this.style.arrowRight}
+          hitSlop={{left: 10, right: 5, top: 0, bottom: 0}}
         >
           {this.props.renderArrow
             ? this.props.renderArrow('right')
@@ -124,7 +114,7 @@ class CalendarHeader extends Component {
           {leftArrow}
           <View style={{ flexDirection: 'row' }}>
             <Text allowFontScaling={false} style={this.style.monthText} accessibilityTraits='header'>
-              {this.props.month.toString(this.props.monthFormat)}
+              {this.props.month.toString(this.props.monthFormat ? this.props.monthFormat : 'MMMM yyyy')}
             </Text>
             {indicator}
           </View>

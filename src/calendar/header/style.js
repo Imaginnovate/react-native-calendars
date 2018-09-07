@@ -8,30 +8,31 @@ export default function(theme={}) {
   return StyleSheet.create({
     header: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingLeft: 10,
-      paddingRight: 10,
-      alignItems: 'center'
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 250,
+      alignSelf: 'center',
     },
     monthText: {
-      fontSize: appStyle.textMonthFontSize,
       fontFamily: appStyle.textMonthFontFamily,
       fontWeight: appStyle.textMonthFontWeight,
-      color: appStyle.monthTextColor,
-      margin: 10
+      color: '#444444',
+      margin: 10,
+      fontSize: 15
     },
     arrow: {
-      padding: 10
+      left:20,
+      paddingLeft: 15,
+      position: 'absolute',
+    },
+    arrowRight: {
+      right: 20,
+      paddingRight: 15,
+      position: 'absolute',
     },
     arrowImage: {
-      ...Platform.select({
-        ios: {
-          tintColor: appStyle.arrowColor
-        },
-        android: {
-          tintColor: appStyle.arrowColor
-        }
-      })
+      width: 25,
+      height: 25
     },
     week: {
       marginTop: 7,
@@ -44,8 +45,9 @@ export default function(theme={}) {
       width: 32,
       textAlign: 'center',
       fontSize: appStyle.textDayHeaderFontSize,
-      fontFamily: appStyle.textDayHeaderFontFamily,
-      color: appStyle.textSectionTitleColor
+      fontFamily: 'ProximaNova-Semibold',
+      color: '#444444',
+      fontSize: 17
     },
     ...(theme[STYLESHEET_ID] || {})
   });

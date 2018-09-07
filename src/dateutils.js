@@ -36,12 +36,12 @@ function month(xd) {
 
   const firstDay = new XDate(year, month, 1, 0, 0, 0, true);
   const lastDay = new XDate(year, month, days, 0, 0, 0, true);
-
   return fromTo(firstDay, lastDay);
 }
 
 function weekDayNames(firstDayOfWeek = 0) {
-  let weekDaysNames = XDate.locales[XDate.defaultLocale].dayNamesShort;
+  // let weekDaysNames = XDate.locales[XDate.defaultLocale].dayNamesShort;
+  let weekDaysNames = ['S','M','T','W','T','F','S'];
   const dayShift = firstDayOfWeek % 7;
   if (dayShift) {
     weekDaysNames = weekDaysNames.slice(dayShift).concat(weekDaysNames.slice(0, dayShift));

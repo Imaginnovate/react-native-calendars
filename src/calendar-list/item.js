@@ -4,11 +4,6 @@ import Calendar from '../calendar';
 import styleConstructor from './style';
 
 class CalendarListItem extends Component {
-  static defaultProps = {
-    hideArrows: true,
-    hideExtraDays: true,
-  };
-
   constructor(props) {
     super(props);
     this.style = styleConstructor(props.theme);
@@ -28,14 +23,13 @@ class CalendarListItem extends Component {
           theme={this.props.theme}
           style={[{height: this.props.calendarHeight, width: this.props.calendarWidth}, this.style.calendar]}
           current={row}
-          hideArrows={this.props.hideArrows}
-          hideExtraDays={this.props.hideExtraDays}
+          hideArrows
+          hideExtraDays={this.props.hideExtraDays === undefined ? true : this.props.hideExtraDays}
           disableMonthChange
           markedDates={this.props.markedDates}
           markingType={this.props.markingType}
           hideDayNames={this.props.hideDayNames}
           onDayPress={this.props.onDayPress}
-          onDayLongPress={this.props.onDayLongPress}
           displayLoadingIndicator={this.props.displayLoadingIndicator}
           minDate={this.props.minDate}
           maxDate={this.props.maxDate}
